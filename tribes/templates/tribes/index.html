@@ -1,0 +1,31 @@
+<html lang="en">
+<head>
+  <title>Tribes</title>
+
+  <style>
+    input {
+      margin: 10px;
+    }
+  </style>
+</head>
+
+<body>
+<div style="text-align: center;">
+  <div>
+    <h3>Tribes</h3>
+  </div>
+  <div>
+    {% if not hide %}
+      <form action="{% url 'tribes' %}" method="post">
+        {% csrf_token %}
+        <label for="name">Name:</label>
+        <br>
+        <input type="text" id="name" name="name">
+        <br>
+        <button type="submit">Submit</button>
+      </form>
+    {% endif %}
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<html lang="en">
+<head>
+  <title>Tribes -- Admin</title>
+
+  <style>
+    div {
+      margin: 10px;
+    }
+  </style>
+
+  <script
+          src="https://code.jquery.com/jquery-3.4.1.min.js"
+          integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+          crossorigin="anonymous"></script>
+
+  <script>
+      var getNames = function () {
+          $.get("{% url 'tribes_ajax' %}", function (data, status) {
+              $('#names').html(data);
+          })
+      };
+
+      getNames();
+
+      setInterval(getNames, 1000);
+  </script>
+</head>
+
+<body>
+<div style="text-align: center;">
+  <div>
+    <h3>Tribes -- Admin</h3>
+  </div>
+  <div>
+    <a href="{% url 'tribes_reset' %}">
+      <button>Start New Game</button>
+    </a>
+  </div>
+  <div id="names">
+
+  </div>
+</div>
+</body>
+</html>
