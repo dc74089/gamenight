@@ -1,9 +1,11 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 
 from .models import *
 
 
 # Create your views here.
+@login_required
 def admin(request):
     return render(request, "tribes/admin.html")
 
@@ -30,6 +32,7 @@ def index(request):
         if 'name' in request.POST:
             TribeName(gamename=request.POST.get("name"), game=TribeGame.objects.filter(active=True).first()).save()
             request.session['gameid'] = TribeGame.objects.filter(active=True).first().id
+        return redirect('tribes')
 
     if not TribeGame.objects.filter(active=True).exists():
         return render(request, 'tribes/index.html', {'hide': True})
