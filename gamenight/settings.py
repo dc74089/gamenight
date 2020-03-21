@@ -20,12 +20,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '6363m=_s*5%a%(%#^&lm0ozxza2h0+n%n-b@x+o)^dkhh!e&u^'
+SECRET_KEY = os.getenv("SECRET", "6363m=_s*5%a%(%#^&lm0ozxza2h0+n%n-b@x+o)^dkhh!e&u^")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['games.canora.us']
 
 
 # Application definition
